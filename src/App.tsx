@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import SearchPage from './Component/view/SearchPage';
+import { ArtistDetail } from './Component/view/ArtistDetail';
+
+const client = new ApolloClient({
+  uri: 'http://127.0.0.1:8080/query',
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ApolloProvider client={client}>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<SearchPage/>}></Route>
+            <Route path='/top'></Route>
+            <Route path='/artist/:artistName' element={<ArtistDetail/>}></Route>
+          </Routes>
+        </BrowserRouter>
+      </ApolloProvider>
+    </>
   );
 }
 
