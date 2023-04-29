@@ -2,9 +2,10 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import SearchPage from './Component/view/SearchPage';
 import { ArtistDetail } from './Component/view/ArtistDetail';
+import { TopPage } from './Component/view/TopPage';
 
 const client = new ApolloClient({
-  uri: 'http://127.0.0.1:8080/query',
+  uri: 'https://graphql-spotify-mbee.up.railway.app/query',
   cache: new InMemoryCache(),
 });
 
@@ -15,7 +16,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<SearchPage/>}></Route>
-            <Route path='/top'></Route>
+            <Route path='/top' element={<TopPage/>}></Route>
             <Route path='/artist/:artistName' element={<ArtistDetail/>}></Route>
           </Routes>
         </BrowserRouter>

@@ -18,7 +18,7 @@ export default function SearchSection(){
                     </div>
                 </div>
             </div>
-            <div className="bg-white mt-20 flex flex-col items-center text-center">
+            <div className="bg-white mt-10 flex flex-col items-center text-center">
                 <div className="font-bold text-3xl w-full">
                     <h1>Find Your Favorite Artist...</h1>
                 </div>

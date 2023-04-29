@@ -1,4 +1,4 @@
-export function HeaderSearch(){
+export function Header(){
 
     return(
         <>
