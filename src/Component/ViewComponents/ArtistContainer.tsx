@@ -1,4 +1,4 @@
-import { Album, ArtistObj, Track } from "../lib/Interface/ArtistObj";
+import { Album, ArtistObj, Track } from "../lib/Interface/DataObj";
 import {Link} from 'react-router-dom'
 
 export function ArtistDetailContainer(data:any){
@@ -14,14 +14,7 @@ export function ArtistDetailContainer(data:any){
                 const album: Album = {
                     id: albumData.id? albumData.id : null,
                     name: albumData.name,
-                    tracks: albumData.tracks.map((trackData:any)=>{
-                        const track :Track = {
-                            id:trackData.id?trackData.id : null,
-                            name:trackData.name,
-                            preview_url: trackData.preview_url
-                        }
-                        return track;
-                    }) 
+                    tracks: null
                 }
                 return album;
             })
@@ -69,14 +62,7 @@ export function ArtistContainer(data :any){
                 const album: Album = {
                     id: albumData.id? albumData.id : null,
                     name: albumData.name,
-                    tracks: albumData.tracks.map((trackData:any)=>{
-                        const track :Track = {
-                            id:trackData.id?trackData.id : null,
-                            name:trackData.name,
-                            preview_url: trackData.preview_url
-                        }
-                        return track;
-                    }) 
+                    tracks: null
                 }
                 return album;
             })

@@ -2,12 +2,13 @@ export interface Track{
     id:string | null;
     name:string;
     preview_url:string;
+    artistName : string | null;
 }
 
 export interface Album{
     id:string|null;
     name:string;
-    tracks : Track[];
+    tracks : Track[] | null;
 }
 
 export interface ArtistObj{
@@ -15,4 +16,9 @@ export interface ArtistObj{
     name: string;
     img : string;
     albums : Album[];
+}
+
+export interface Playlist{
+    image: string;
+    tracks : Track[]
 }
