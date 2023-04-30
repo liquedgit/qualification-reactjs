@@ -5,7 +5,7 @@ export function ButtonComponent(props:ButtonProps){
     console.log(stylingName);
     return(
         <>
-            <button className={stylingName}>
+            <button className={`${stylingName} mr-10 mt-5 md:mt-0`}>
                 <span className="my-4 mx-4">
                     {props.text}
                 </span>

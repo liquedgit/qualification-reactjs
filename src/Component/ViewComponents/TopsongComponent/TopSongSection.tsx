@@ -20,7 +20,7 @@ export function TopSongSection(){
             tracks : playListData.tracks.items.map((curr:any)=>{
                 const mTrack :Track= {
                     id:(curr.track.id ? curr.track.id : null),
-                    name:curr.track.artists[0].name,
+                    name:curr.track.name,
                     preview_url:curr.track.preview_url,
                     artistName:curr.track.artists[0].name? curr.track.artists[0].name : null
                 }
@@ -31,12 +31,12 @@ export function TopSongSection(){
     // console.log(topData)
     return(
         <>
-            <div className="relative flex h-full w-full bg-stone-700 text-white">
+            <div className="relative flex flex-col h-full w-full bg-stone-700 text-white md:flex-row">
                 <div className="m-10">
                     <img src={topData?.image} alt=""  className="max-w-xs rounded-3xl"/>
                 </div>
-                <div className="w-full">
-                    <h1 className="font-medium m-5 text-8xl">Top 50 Tracks in Indonesia</h1>
+                <div className="w-full ">
+                    <h1 className="font-medium m-10 text-7xl md:m-5">Top 50 Tracks in Indonesia</h1>
                     <div className="flex flex-col">
                         {
                             topData?.tracks.map((currtrack:Track)=>{

@@ -2,6 +2,7 @@ import {useQuery} from "@apollo/client"
 import { GET_ARTIST_DATA } from "./queries/ListQueries"
 import { useEffect, useState } from "react";
 
+
 export function GetSearchData({artistName, setData}:{artistName:string, setData : Function}){
     const {loading,error,data}= useQuery(GET_ARTIST_DATA, {
         variables:{
@@ -36,6 +37,44 @@ export function GetSearchData({artistName, setData}:{artistName:string, setData 
         </>
     )
 }
+
+async function UseFetchArtistData(artist:string) {
+    const { loading, error, data } = useQuery(GET_ARTIST_DATA, {
+      variables: {
+        artistName: artist,
+      },
+    });
+    console.log(data)
+  
+    return {
+      loading,
+      error,
+      data,
+    };
+  }
+
+export async function GetAllSearchData({favArtist, setData, allData}:{favArtist:string[], setData:Function, allData:any[]}) {
+
+    favArtist.forEach((artist)=>{
+        try{
+            const {loading,error,data} = await UseFetchArtistData(artist)
+        }catch(error){
+            
+        }
+        // if(loading){
+        //     console.log(loading)
+        // }
+
+        // if(error){
+        //     console.log(error.message);
+        // }
+
+        // console.log(data);
+        // setData([...allData, data])
+    })
+}
+  
+
 
 const  CLIENT_ID = "20838970af904b19b803f7bf9934043a"
 const SECRET_ID = "cbf9a48ce1bd49ae98f355e84c3c0a67"
