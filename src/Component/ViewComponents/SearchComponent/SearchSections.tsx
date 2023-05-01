@@ -14,9 +14,9 @@ export default function SearchSection(){
                 <div className="px-14 py-10 text-white border-">
                     <h1 className= "font-bold text-5xl">Listen without limits</h1>
                     <p className="my-10 text-2xl te">Premium lets you listen to music everywhere, even offline. No restrictions. Ad-free music listening.</p>
-                    <div>
+                    <div className="w-full">
                         <Link to={`/top`}>
-                            <ButtonComponent text="Get Started" color="text-white" backgroundColor="bg-gray-950"/>
+                            <ButtonComponent text="Top Artist" color="text-white" backgroundColor="bg-gray-950"/>
                         </Link>
                         <Link to="/favorite">
                             <ButtonComponent text="Favorite List" color="text-white border border-white border-2" backgroundColor="bg-blue-500"/>

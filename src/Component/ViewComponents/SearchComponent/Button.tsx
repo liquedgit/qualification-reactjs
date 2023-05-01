@@ -5,7 +5,7 @@ export function ButtonComponent(props:ButtonProps){
     console.log(stylingName);
     return(
         <>
-            <button className={`${stylingName} mr-10 mt-5 md:mt-0`}>
+            <button className={`${stylingName} w-full mr-10 mt-5 md:mt-0 md:w-auto`}>
                 <span className="my-4 mx-4">
                     {props.text}
                 </span>

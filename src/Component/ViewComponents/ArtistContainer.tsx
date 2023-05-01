@@ -1,4 +1,4 @@
-import { Album, ArtistObj, Track } from "../lib/Interface/DataObj";
+import { Album, ArtistObj } from "../lib/Interface/DataObj";
 import {Link, useMatch} from 'react-router-dom'
 import { FavoriteButtton } from "./FavoriteButton";
 
@@ -107,8 +107,4 @@ export function ArtistContainer(data :any){
         </div>
         </>
     );
-}
-
-export function ArtistCard(data:any){
-    
 }

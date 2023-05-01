@@ -38,41 +38,41 @@ export function GetSearchData({artistName, setData}:{artistName:string, setData 
     )
 }
 
-async function UseFetchArtistData(artist:string) {
-    const { loading, error, data } = useQuery(GET_ARTIST_DATA, {
-      variables: {
-        artistName: artist,
-      },
-    });
-    console.log(data)
+// async function UseFetchArtistData(artist:string) {
+//     const { loading, error, data } = useQuery(GET_ARTIST_DATA, {
+//       variables: {
+//         artistName: artist,
+//       },
+//     });
+//     console.log(data)
   
-    return {
-      loading,
-      error,
-      data,
-    };
-  }
+//     return {
+//       loading,
+//       error,
+//       data,
+//     };
+//   }
 
-export async function GetAllSearchData({favArtist, setData, allData}:{favArtist:string[], setData:Function, allData:any[]}) {
+// export async function GetAllSearchData({favArtist, setData, allData}:{favArtist:string[], setData:Function, allData:any[]}) {
 
-    favArtist.forEach((artist)=>{
-        try{
-            const {loading,error,data} = await UseFetchArtistData(artist)
-        }catch(error){
+//     favArtist.forEach((artist)=>{
+//         try{
+//             const {loading,error,data} = await UseFetchArtistData(artist)
+//         }catch(error){
             
-        }
-        // if(loading){
-        //     console.log(loading)
-        // }
+//         }
+//         // if(loading){
+//         //     console.log(loading)
+//         // }
 
-        // if(error){
-        //     console.log(error.message);
-        // }
+//         // if(error){
+//         //     console.log(error.message);
+//         // }
 
-        // console.log(data);
-        // setData([...allData, data])
-    })
-}
+//         // console.log(data);
+//         // setData([...allData, data])
+//     })
+// }
   
 
 

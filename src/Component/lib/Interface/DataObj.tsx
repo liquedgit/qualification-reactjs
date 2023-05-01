@@ -22,3 +22,9 @@ export interface Playlist{
     image: string;
     tracks : Track[]
 }
+
+export interface ArtistTop{
+    id:string;
+    name:string;
+    img:string;
+}

@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import { GetTopPlayList } from "../../lib/FetchData";
-import { Playlist, Track } from "../../lib/Interface/DataObj";
+import { ArtistObj, ArtistTop, Playlist, Track } from "../../lib/Interface/DataObj";
 import { SongContainer } from "../TopSong";
 
 export function TopSongSection(){
     const {playListData, error}:{playListData:any, error : any} = GetTopPlayList();
-    let topData:Playlist | null = null;
+    let topData:ArtistTop[]| null = null;
 
     if(error){
         console.log(error)
@@ -14,34 +15,41 @@ export function TopSongSection(){
     }
     if(playListData != null){
         // console.log(playListData.images[0].url);
-        console.log(playListData.tracks.items)
-        topData={
-            image:playListData.images[0].url,
-            tracks : playListData.tracks.items.map((curr:any)=>{
-                const mTrack :Track= {
-                    id:(curr.track.id ? curr.track.id : null),
-                    name:curr.track.name,
-                    preview_url:curr.track.preview_url,
-                    artistName:curr.track.artists[0].name? curr.track.artists[0].name : null
+        // console.log(playListData)
+
+        topData = playListData.tracks.items.map((item:any)=>{
+            const artistData : ArtistTop = {
+                    id: item.track.artists[0].id,
+                    name: item.track.artists[0].name,
+                    img: item.track.album.images[0].url,
                 }
-                return mTrack;
+                return artistData;
             })
-        }
+        
     }
-    // console.log(topData)
+    console.log(topData)
     return(
         <>
             <div className="relative flex flex-col h-full w-full bg-stone-700 text-white md:flex-row">
-                <div className="m-10">
-                    <img src={topData?.image} alt=""  className="max-w-xs rounded-3xl"/>
-                </div>
                 <div className="w-full ">
-                    <h1 className="font-medium m-10 text-7xl md:m-5">Top 50 Tracks in Indonesia</h1>
+                    <h1 className="font-medium m-10 text-6xl text-center">Top 50 Most played Artist in Indonesia</h1>
                     <div className="flex flex-col">
                         {
-                            topData?.tracks.map((currtrack:Track)=>{
+                            topData?.map((artist)=>{
                                 return(
-                                    <SongContainer track={currtrack}/>
+                                    <>
+                                        <Link to={`/artist/${artist.name}`}>
+                                            <div key={artist.id} className="py-5">
+                                                <div className="flex justify-center items-center">
+                                                    <img src={artist.img} alt="" className="max-w-sm p-10 rounded-full"/>
+                                                </div>
+                                                <div className="flex justify-center items-center font-bold text-2xl">
+                                                    <h1>{artist.name}</h1>
+                                                </div>
+                                            </div>
+                                        </Link>
+
+                                    </>
                                 )
                             })
                         }
