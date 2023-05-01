@@ -27,7 +27,7 @@ export function TopSongSection(){
             })
         
     }
-    console.log(topData)
+    // console.log(topData)
     return(
         <>
             <div className="relative flex flex-col h-full w-full bg-stone-700 text-white md:flex-row">

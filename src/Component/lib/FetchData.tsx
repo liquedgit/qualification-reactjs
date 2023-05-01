@@ -10,7 +10,7 @@ export function GetSearchData({artistName, setData}:{artistName:string, setData 
         }
     })
 
-    console.log(artistName)
+    // console.log(artistName)
     if(loading){
         return(
             <>
@@ -20,7 +20,7 @@ export function GetSearchData({artistName, setData}:{artistName:string, setData 
     }
 
     if(error){
-        console.log(error.message)
+        // console.log(error.message)
         if(artistName.length > 0){
             return(
                 <>
@@ -30,7 +30,7 @@ export function GetSearchData({artistName, setData}:{artistName:string, setData 
         }
     }
 
-    console.log(data);
+    // console.log(data);
     setData(data);
     return(
         <>

@@ -6,7 +6,7 @@ export function ArtistDetailContainer(data:any){
     let artistObj : ArtistObj | null;
     artistObj = null
     if(data!=null && data.data!=null){
-        console.log(data.data.artist.albums)
+        // console.log(data.data.artist.albums)
         artistObj = {
             id:data.data.artist.id,
             name: data.data.artist.name,
@@ -57,7 +57,7 @@ export function ArtistContainer(data :any){
     const match = useMatch('/artist/:artistName')
 
     if(data!=null && data.data!=null){
-        console.log(data.data.artist.albums)
+        // console.log(data.data.artist.albums)
         artistObj = {
             id:data.data.artist.id,
             name: data.data.artist.name,
