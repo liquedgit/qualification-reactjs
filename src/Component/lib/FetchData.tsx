@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 
 export function GetSearchData({artistName, setData}:{artistName:string, setData : Function}){
-    console.log(artistName);
+    // console.log(artistName);
     const {loading,error,data}= useQuery(GET_ARTIST_DATA, {
         variables:{
             artistName:artistName
