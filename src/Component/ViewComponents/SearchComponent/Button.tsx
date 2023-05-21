@@ -2,7 +2,7 @@ import { ButtonProps } from "../../../TypeScript/Type";
 
 export function ButtonComponent(props:ButtonProps){
     let stylingName = `${props.color} ${props.backgroundColor} rounded-3xl py-2 px-2 text-lg`
-    console.log(stylingName);
+    // console.log(stylingName);
     return(
         <>
             <button className={`${stylingName} w-full mr-10 mt-5 md:mt-0 md:w-auto`}>

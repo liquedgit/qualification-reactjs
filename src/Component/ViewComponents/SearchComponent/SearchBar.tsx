@@ -1,15 +1,25 @@
 import SearchIcon from '../../../assets/search-icon.png'
 import { GetSearchData } from '../../lib/FetchData';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 export function SearchBar({setSearchData} : {setSearchData:Function}){
     
     const[searchText, setSearchText] = useState("");    
+    const[debouncedText, setDebouncedText] = useState("")
 
     let handleOnChange = (e :React.ChangeEvent<HTMLInputElement>)=>{
         setSearchText(e.target.value);
     }
+
+    useEffect(()=>{
+        const timeout = setTimeout(()=>{
+            setDebouncedText(searchText)
+        }, 500)
+        return()=>{
+            clearTimeout(timeout)
+        }
+    },[searchText])
 
     
     return(
@@ -20,7 +30,7 @@ export function SearchBar({setSearchData} : {setSearchData:Function}){
             </div>
 
             <div className=''>
-                <GetSearchData artistName={searchText} setData={setSearchData}/>
+                <GetSearchData artistName={debouncedText} setData={setSearchData}/>
             </div>
         </>
 

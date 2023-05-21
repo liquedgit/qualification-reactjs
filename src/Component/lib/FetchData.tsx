@@ -4,13 +4,21 @@ import { useEffect, useState } from "react";
 
 
 export function GetSearchData({artistName, setData}:{artistName:string, setData : Function}){
+    console.log(artistName);
     const {loading,error,data}= useQuery(GET_ARTIST_DATA, {
         variables:{
             artistName:artistName
         }
     })
 
-    // console.log(artistName)
+
+    useEffect(()=>{
+        if(!loading && !error){
+            setData(data)
+        }
+    }, [data])
+    
+
     if(loading){
         return(
             <>
@@ -20,7 +28,6 @@ export function GetSearchData({artistName, setData}:{artistName:string, setData 
     }
 
     if(error){
-        // console.log(error.message)
         if(artistName.length > 0){
             return(
                 <>
@@ -31,48 +38,12 @@ export function GetSearchData({artistName, setData}:{artistName:string, setData 
     }
 
     // console.log(data);
-    setData(data);
+    // setData(data);
     return(
         <>
         </>
     )
 }
-
-// async function UseFetchArtistData(artist:string) {
-//     const { loading, error, data } = useQuery(GET_ARTIST_DATA, {
-//       variables: {
-//         artistName: artist,
-//       },
-//     });
-//     console.log(data)
-  
-//     return {
-//       loading,
-//       error,
-//       data,
-//     };
-//   }
-
-// export async function GetAllSearchData({favArtist, setData, allData}:{favArtist:string[], setData:Function, allData:any[]}) {
-
-//     favArtist.forEach((artist)=>{
-//         try{
-//             const {loading,error,data} = await UseFetchArtistData(artist)
-//         }catch(error){
-            
-//         }
-//         // if(loading){
-//         //     console.log(loading)
-//         // }
-
-//         // if(error){
-//         //     console.log(error.message);
-//         // }
-
-//         // console.log(data);
-//         // setData([...allData, data])
-//     })
-// }
   
 
 
